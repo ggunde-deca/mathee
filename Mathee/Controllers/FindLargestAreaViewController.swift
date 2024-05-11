@@ -27,12 +27,9 @@ class FindLargestAreaViewController: UIViewController, UICollectionViewDelegate,
     var myTitle: String!
     var myThemeColor: UIColor!
     
-    var setOfOnesAndZeros = [
-        1, 0, 1, 0,
-        1, 0, 1, 1,
-        0, 1, 1, 1,
-        1, 0, 1, 1
-    ]
+    var setOfOnesAndZeros = [Int]()
+    
+    let number_of_numeric_cells = 16
 
     let colorsArray: [UIColor] = [
         .systemOrange,
@@ -60,8 +57,10 @@ class FindLargestAreaViewController: UIViewController, UICollectionViewDelegate,
 
         self.title = self.myTitle
         setThemeColorTo(myThemeColor: myThemeColor)
-        
-        setOfOnesAndZeros = setOfOnesAndZeros.shuffled()
+                
+        for _ in 1...number_of_numeric_cells {
+            setOfOnesAndZeros.append(Int.random(in: 0..<2))
+        }
         
         myCollectionView.isHidden = true
     }
